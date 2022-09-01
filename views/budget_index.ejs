@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/normalize.css" />
+    <link rel="stylesheet" href="/skeleton.css" />
+    <title>Budget Index</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Budgtr ALL</h1>
+        <% for (i = 0; i < budgets.length; i++) { %>
+            <% bankAcc = bankAcc + parseInt(budgets[i].amount) %>
+            <% } %>
+            <h2><%= bankAcc %></h2>
+            <table>
+                <% for (i = 0; i < budgets.length; i++) { %>
+                    <tr>
+                        <td><%= budgets[i].date %></td>
+                        <td><a href="/budgets/<%= i %>"><%= budgets[i].name %></a></td>
+                        <td><%= budgets[i].from %></td>
+                        <td>$<%= budgets[i].amount %></td>
+                        <td><%= budgets[i].tags.join(", ") %></td>
+                    </tr>
+                    <% } %>
+                </table>
+                <button><a href="/budgets/new/">Add New Item</a></button>
+            </div>
+        </body>
+        <% if (bankAcc < 0) {%>
+                <style>
+                    body {
+                        background-color: red;
+                    }
+                </style>
+        <% } %>
+        <% if (bankAcc > 1000) { %>
+                <style>
+                    body {
+                        background-color: blue;
+                    }
+                </style>
+        <% } %>
+</html>
+Footer
+© 2022 GitHub, Inc.
+Footer navigation
+Terms
+Privacy
+Security
